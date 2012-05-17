@@ -10,6 +10,8 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.qos.logback.classic.Level;
+
 /**
  * @author Sean Flanigan <sflaniga@redhat.com>
  *
@@ -104,23 +106,27 @@ public class ArgsUtil
    /**
     * Maven's --debug/-X flag sets the Maven LoggerManager to LEVEL_DEBUG. The
     * slf4j framework doesn't provide any way of doing this, so we have to go to
-    * the underlying framework (assumed to be log4j).
+    * the underlying framework (assumed to be logback).
     */
    private static void enableDebugLogging()
    {
-      org.apache.log4j.Logger root = org.apache.log4j.Logger.getRootLogger();
-      root.setLevel(org.apache.log4j.Level.DEBUG);
+      getRootLogger().setLevel(Level.DEBUG);
    }
 
    /**
     * Maven's --quiet/-q flag sets the Maven LoggerManager to LEVEL_ERROR. The
     * slf4j framework doesn't provide any way of doing this, so we have to go to
-    * the underlying framework (assumed to be log4j).
+    * the underlying framework (assumed to be logback).
     */
    private static void enableQuietLogging()
    {
-      org.apache.log4j.Logger root = org.apache.log4j.Logger.getRootLogger();
-      root.setLevel(org.apache.log4j.Level.ERROR);
+      getRootLogger().setLevel(Level.ERROR);
+   }
+
+   private static ch.qos.logback.classic.Logger getRootLogger()
+   {
+      // TODO move ZanataClient and ArgsUtil to a new uberjar module, which has logback as a 'compile' dependency
+      return (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
    }
 
    private static void printHelp(BasicOptions cmd, PrintStream output)
