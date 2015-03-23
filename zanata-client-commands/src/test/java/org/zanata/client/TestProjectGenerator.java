@@ -92,7 +92,7 @@ public class TestProjectGenerator {
         opts.setUsername(instance.getUsername());
         opts.setKey(instance.getKey());
         ZanataProxyFactory requestFactory =
-                OptionsUtil.createRequestFactory(opts);
+                OptionsUtil.createRequestFactory(opts, true);
 
         Project projectDTO = createProjectDTO(projectRootMap.get(projectType));
         String projectSlug = projectDTO.getId();

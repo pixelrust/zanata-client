@@ -73,7 +73,7 @@ public class ProjectPromptTest {
         opts.setUsername("admin");
         opts.setKey("abcde");
         opts.setLogHttp(false);
-        proxyFactory = OptionsUtil.createRequestFactory(opts);
+        proxyFactory = OptionsUtil.createRequestFactory(opts, true);
     }
 
     // this test sets up a localhost mock server and simulate full REST round
