@@ -59,7 +59,7 @@ public class PublicanPullCommand extends
     }
 
     public PublicanPullCommand(PublicanPullOptions opts) {
-        this(opts, OptionsUtil.createRequestFactory(opts));
+        this(opts, OptionsUtil.createRequestFactory(opts, false));
     }
 
     @Override

@@ -86,7 +86,7 @@ public class PushCommand extends PushPullCommand<PushOptions> {
     }
 
     public PushCommand(PushOptions opts) {
-        super(opts);
+        super(opts, true);
         copyTransResource = getRequestFactory().getCopyTransResource();
         asyncProcessResource =
                 getRequestFactory().getAsynchronousProcessResource();

@@ -53,7 +53,7 @@ public abstract class ConfigurableCommand<O extends ConfigurableOptions>
         if (factory != null)
             this.requestFactory = factory;
         else
-            this.requestFactory = OptionsUtil.createRequestFactory(opts);
+            this.requestFactory = OptionsUtil.createRequestFactory(opts, true);
     }
 
     public ConfigurableCommand(O opts) {

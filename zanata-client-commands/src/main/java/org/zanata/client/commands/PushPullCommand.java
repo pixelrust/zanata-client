@@ -91,8 +91,8 @@ public abstract class PushPullCommand<O extends PushPullOptions> extends
                 .getResourceURI(opts.getProj(), opts.getProjectVersion()));
     }
 
-    public PushPullCommand(O opts) {
-        this(opts, OptionsUtil.createRequestFactory(opts));
+    public PushPullCommand(O opts, boolean requireAuth) {
+        this(opts, OptionsUtil.createRequestFactory(opts, requireAuth));
     }
 
     protected void confirmWithUser(String message) throws IOException {

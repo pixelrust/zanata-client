@@ -71,7 +71,7 @@ public class RawPushCommand extends PushPullCommand<PushOptions> {
     protected final IFileResource fileResource;
 
     public RawPushCommand(PushOptions opts) {
-        super(opts);
+        super(opts, true);
         this.fileResource = getRequestFactory().getFileResource();
     }
 

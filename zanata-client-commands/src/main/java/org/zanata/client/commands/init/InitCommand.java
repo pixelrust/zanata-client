@@ -217,7 +217,7 @@ public class InitCommand extends ConfigurableCommand<InitOptions> {
         if (requestFactory != null) {
             return requestFactory;
         } else {
-            requestFactory = OptionsUtil.createRequestFactory(getOpts());
+            requestFactory = OptionsUtil.createRequestFactory(getOpts(), true);
             console.blankLine();
             return requestFactory;
         }

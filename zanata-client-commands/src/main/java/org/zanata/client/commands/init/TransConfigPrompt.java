@@ -74,7 +74,7 @@ class TransConfigPrompt {
         pullOptions.setProjectType(opts.getProjectType());
         pullOptions.setLocaleMapList(opts.getLocaleMapList());
         ZanataProxyFactory proxyFactory =
-                OptionsUtil.createRequestFactoryWithoutVersionCheck(opts);
+                OptionsUtil.createRequestFactoryWithoutVersionCheck(opts, true);
         pullCommand = new PullCommand(pullOptions, proxyFactory, null, null,
                 proxyFactory.getResourceURI(opts.getProj(),
                         opts.getProjectVersion()));

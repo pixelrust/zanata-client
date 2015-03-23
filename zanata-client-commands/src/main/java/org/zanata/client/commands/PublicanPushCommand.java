@@ -70,7 +70,7 @@ public class PublicanPushCommand extends
     }
 
     public PublicanPushCommand(PublicanPushOptions opts) {
-        this(opts, OptionsUtil.createRequestFactory(opts));
+        this(opts, OptionsUtil.createRequestFactory(opts, true));
     }
 
     @Override

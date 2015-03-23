@@ -60,7 +60,7 @@ public class RawPullCommand extends PushPullCommand<PullOptions> {
     private IFileResource fileResource;
 
     public RawPullCommand(PullOptions opts) {
-        super(opts);
+        super(opts, false);
         this.fileResource = getRequestFactory().getFileResource();
     }
 

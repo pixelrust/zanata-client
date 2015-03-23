@@ -72,7 +72,7 @@ public class GlossaryPushCommand extends
     }
 
     public GlossaryPushCommand(GlossaryPushOptions opts) {
-        this(opts, OptionsUtil.createRequestFactory(opts));
+        this(opts, OptionsUtil.createRequestFactory(opts, true));
 
         glossaryReaders.put("po", new GlossaryPoReader(
                 getLocaleFromMap(getOpts().getSourceLang()),

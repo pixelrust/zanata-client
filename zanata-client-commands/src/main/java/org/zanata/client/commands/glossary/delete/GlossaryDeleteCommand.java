@@ -56,7 +56,7 @@ public class GlossaryDeleteCommand extends
     }
 
     public GlossaryDeleteCommand(GlossaryDeleteOptions opts) {
-        this(opts, OptionsUtil.createRequestFactory(opts));
+        this(opts, OptionsUtil.createRequestFactory(opts, true));
     }
 
     @Override

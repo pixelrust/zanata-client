@@ -59,7 +59,7 @@ public class PullCommand extends PushPullCommand<PullOptions> {
     }
 
     public PullCommand(PullOptions opts) {
-        super(opts);
+        super(opts, false);
     }
 
     public PullCommand(PullOptions opts, ZanataProxyFactory factory,

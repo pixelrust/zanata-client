@@ -272,31 +272,15 @@ public class OptionsUtil {
      * Creates proxy factory that will perform an eager REST version check.
      */
     public static ZanataProxyFactory createRequestFactory(
-            ConfigurableOptions opts) {
+            ConfigurableOptions opts, boolean requireAuth) {
         try {
-            checkMandatoryOptsForRequestFactory(opts);
+            checkMandatoryOptsForRequestFactory(opts, requireAuth);
             return new ZanataProxyFactory(opts.getUrl().toURI(),
                     opts.getUsername(), opts.getKey(),
                     VersionUtility.getAPIVersionInfo(), opts.getLogHttp(),
                     opts.isDisableSSLCert());
         } catch (URISyntaxException e) {
             throw new ConfigException(e);
-        }
-    }
-
-    private static void checkMandatoryOptsForRequestFactory(
-            ConfigurableOptions opts) {
-        if (opts.getUrl() == null) {
-            throw new ConfigException("Server URL must be specified");
-        }
-        if (opts.getUsername() == null) {
-            throw new ConfigException("Username must be specified");
-        }
-        if (opts.getKey() == null) {
-            throw new ConfigException("API key must be specified");
-        }
-        if (opts.isDisableSSLCert()) {
-            log.warn("SSL certificate verification will be disabled. You should consider adding the certificate instead of disabling it.");
         }
     }
 
@@ -307,15 +291,33 @@ public class OptionsUtil {
      * afterwards.
      */
     public static ZanataProxyFactory createRequestFactoryWithoutVersionCheck(
-            ConfigurableProjectOptions opts) {
+        ConfigurableProjectOptions opts, boolean requireAuth) {
         try {
-            checkMandatoryOptsForRequestFactory(opts);
+            checkMandatoryOptsForRequestFactory(opts, requireAuth);
             return new ZanataProxyFactory(opts.getUrl().toURI(),
-                    opts.getUsername(), opts.getKey(),
-                    VersionUtility.getAPIVersionInfo(), opts.getLogHttp(),
-                    opts.isDisableSSLCert(), false);
+                opts.getUsername(), opts.getKey(),
+                VersionUtility.getAPIVersionInfo(), opts.getLogHttp(),
+                opts.isDisableSSLCert(), false);
         } catch (URISyntaxException e) {
             throw new ConfigException(e);
+        }
+    }
+
+    private static void checkMandatoryOptsForRequestFactory(
+            ConfigurableOptions opts, boolean requireAuth) {
+        if (opts.getUrl() == null) {
+            throw new ConfigException("Server URL must be specified");
+        }
+        if(requireAuth) {
+            if (opts.getUsername() == null) {
+                throw new ConfigException("Username must be specified");
+            }
+            if (opts.getKey() == null) {
+                throw new ConfigException("API key must be specified");
+            }
+        }
+        if (opts.isDisableSSLCert()) {
+            log.warn("SSL certificate verification will be disabled. You should consider adding the certificate instead of disabling it.");
         }
     }
 

@@ -86,7 +86,7 @@ class SourceConfigPrompt {
         pushOptions.setLocaleMapList(opts.getLocaleMapList());
 
         ZanataProxyFactory proxyFactory = OptionsUtil
-                .createRequestFactoryWithoutVersionCheck(pushOptions);
+                .createRequestFactoryWithoutVersionCheck(pushOptions, true);
         pushCommand =
                 new PushCommand(pushOptions, proxyFactory, null,
                         null, proxyFactory
