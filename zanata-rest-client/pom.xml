@@ -21,10 +21,8 @@
 
   <dependencies>
     <dependency>
-      <!-- stub server needs this to appear before jersey-core (mainly for IDE) -->
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>jaxrs-api</artifactId>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.zanata</groupId>
@@ -45,7 +43,6 @@
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-core</artifactId>
-      <version>${jersey.version}</version>
     </dependency>
     <dependency>
       <groupId>com.sun.jersey</groupId>
